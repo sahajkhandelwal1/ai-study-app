@@ -21,12 +21,8 @@ struct View1: View {
                     
                     ForEach(progress.progressArray.indices,id:\.self) { index in
                         Rectangle()
-                            .fill(
-                                progress.progressArray[index] == true ? .green : // Green if true
-                                progress.progressArray[index] == false ? .red : // Red if false
-                                    .gray // Gray if nil
-                            )
-                            .frame(width: 30, height: 30)
+                            .fill(colorForAnswer(progress.progressArray[index].answerCorrect))
+                                        .frame(width: 30, height: 30)
                     }
                     
                 }

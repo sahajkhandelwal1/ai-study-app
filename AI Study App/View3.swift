@@ -22,11 +22,7 @@ struct View3: View {
                     
                     ForEach(progress.progressArray.indices,id:\.self) { index in
                         Rectangle()
-                            .fill(
-                                            progress.progressArray[index] == true ? .green : // Green if true
-                                            progress.progressArray[index] == false ? .red : // Red if false
-                                            .gray // Gray if nil
-                                        )
+                            .fill(colorForAnswer(progress.progressArray[index].answerCorrect))
                                         .frame(width: 30, height: 30)
                     }
                     
@@ -46,7 +42,7 @@ struct View3: View {
                     answerChecked = true
                     answerCorrect = answerTwo.lowercased() == "sahaj"
                     
-                    progress.progressArray[1] = answerCorrect
+                    progress.progressArray[1].answerCorrect = answerCorrect
                     
                 }, label: {
                     Text("Check Answer")
